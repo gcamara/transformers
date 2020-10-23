@@ -1,0 +1,13 @@
+.default-border {
+    border: .2rem #161616 solid;
+}
+
+@mixin size($size) {
+    width: $size;
+    height: $size;
+}
+
+@mixin dimension($w, $h) {
+    width: $w;
+    height: $h;
+}

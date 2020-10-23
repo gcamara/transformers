@@ -1,0 +1,38 @@
+<div class="ch-details">
+    <div class="name">{{ characterName() }}</div>
+    <div class="spacer-20"></div>
+    <div class="stats">
+        <div class="stat" *ngFor="let stat of stats">
+            <span class="stat-name">{{ stat }}</span>
+            <span>{{ characterStat(stat) }}</span>
+        </div>
+        <div class="overall">
+            Overall Rating
+            <div class="rating">
+                {{ characterRating() }}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="characters">
+    <div class="ch-list">
+        <div class="title">{{ autobots ? 'Autobots' : 'Decepticons' }}</div>
+        <div class="spacer-10"></div>
+        <div class="pick">Choose 3 characters</div>
+        <div class="spacer-10"></div>
+        <div class="bots">
+            <app-bot-thumb *ngFor="let bot of botList()" [bot]="bot" [selected]="isBotSelected(bot.name)"
+                (click)="selectBot(bot)" (mouseover)="showStats(bot)"></app-bot-thumb>
+        </div>
+
+    </div>
+    <div class="grow"></div>
+    <div class="ch-team">
+        <div class="title sm">Your team</div>
+        <div class="spacer-10"></div>
+        <div class="bots">
+            <app-bot-thumb *ngFor="let bot of selectedTeam" [bot]="bot" size='big'></app-bot-thumb>
+            <div class="grow"></div>
+        </div>
+    </div>
+</div>

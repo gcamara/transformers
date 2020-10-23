@@ -1,0 +1,53 @@
+@import '../../../assets/tokens';
+$size: 13rem;
+
+:host {
+    display: block;
+    @include size($size);
+    background-color: white;
+    border: 0.4rem transparent inset;
+    margin-bottom: 0.3rem;
+    cursor: pointer;
+
+    .content, img {
+        @include size($size);
+    }
+    
+    img {
+        object-fit: contain;
+    }
+
+    &.big {
+        $w: 12rem;
+        $h: 15rem;
+        cursor: initial;
+        @include dimension($w, $h);
+        
+        .content {
+            @include dimension($w, $h);
+        }
+
+        img {
+            @include dimension($w, $h);
+        }
+    }
+
+    &:not(.big):hover {
+        border: 0.4rem #00c2ff inset;
+    }
+
+
+    &.selected {
+        img {
+            filter: grayscale(1);
+        }
+    }
+
+    .random {
+        @include size($size);
+        font-size: $size;
+        line-height: $size;
+        color: #cecece;
+        text-align: center;
+    }
+}
