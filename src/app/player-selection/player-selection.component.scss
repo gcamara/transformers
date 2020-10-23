@@ -29,33 +29,6 @@
     color: white;
 }
 
-.menu {
-    min-height: 5rem;
-    width: 8rem;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-    box-sizing: border-box;
-    transition: all .6s cubic-bezier(0,0,0,1.2);
-    position: relative;
-}
-
-.logo {
-    $s: 5rem;
-    @include size($s);
-    background: url(../../assets/images/logo.png);
-    background-size: $s;
-    background-repeat: no-repeat;
-    transition: all .5s cubic-bezier(0,0,0,1.4);
-    
-    &:hover {
-        background: url(../../assets/images/logo.png), radial-gradient(#fff 40%, rgba(0,0,0,0) 30%);
-        background-size: $s;
-    }
-}
-
 .select-char {
     width: 100%;
     color: white;

@@ -8,6 +8,8 @@ import { CharactersComponent } from './characters/characters.component';
 import { PlayerSelectionComponent } from './player-selection/player-selection.component';
 import { PopupComponent } from './shared/popup/popup.component';
 import { StartGameComponent } from './start-game/start-game.component';
+import { BattleFieldComponent } from './battle-field/battle-field.component';
+import { MenuComponent } from './menu/menu.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { StartGameComponent } from './start-game/start-game.component';
     BotThumbComponent,
     StartGameComponent,
     PlayerSelectionComponent,
-    PopupComponent
+    PopupComponent,
+    BattleFieldComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,

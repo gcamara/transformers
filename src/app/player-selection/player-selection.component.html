@@ -1,6 +1,4 @@
-<div class="menu">
-    <a [routerLink]="['/']" class="logo"></a>
-</div>
+<app-menu></app-menu>
 <div class="selection">
     <app-characters [autobots]='true' (completeSelection)="selectAutobots($event)"></app-characters>
     <div class="versus">VS.</div>

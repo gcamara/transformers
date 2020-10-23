@@ -1,0 +1,20 @@
+<app-menu></app-menu>
+
+<div class="battle">
+    <div class="autobots">
+        <app-bot-thumb *ngFor="let bot of bots.autobots" [bot]="bot" size='big'></app-bot-thumb>
+    </div>
+    <div class="spacer-30"></div>
+    <div class="field">
+        <div class="message" *ngFor="let log of logs">
+            {{log.message}}
+        </div>
+    </div>
+    <div class="spacer-30"></div>
+    <div class="decepticons">
+        <app-bot-thumb *ngFor="let bot of bots.decepticons" [bot]="bot" size='big'></app-bot-thumb>
+    </div>
+</div>
+<div class="gameover">
+    GAME OVER
+</div>

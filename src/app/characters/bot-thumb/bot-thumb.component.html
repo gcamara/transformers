@@ -1,6 +1,8 @@
 <div class="content">
-    <img *ngIf="bot?.name" src="../../../assets/images/{{bot.type.toLowerCase()}}s/{{bot.name.toLowerCase()}}{{size !== 'big' ? '-thumb' : ''}}.jpg">
+    <img *ngIf="bot?.name" [ngClass]="{status: bot?.status && bot.status !== 'skipped'}" src="/assets/images/{{bot.type.toLowerCase()}}s/{{bot.name.toLowerCase()}}{{size !== 'big' ? '-thumb' : ''}}.jpg">
     <div class="empty-border">
         ?
+    </div>
+    <div class="status" *ngIf="bot?.status" [ngClass]="{ destroyed: bot?.status === 'destroyed', skipped: bot?.status === 'skipped', defeated: bot?.status === 'defeated' }">
     </div>
 </div>

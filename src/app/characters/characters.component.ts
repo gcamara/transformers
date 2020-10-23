@@ -33,6 +33,9 @@ export class CharactersComponent {
     this.bots = transfomerService.getBots();
   }
 
+  /**
+   * Emits to the parent component an event with the current team.
+   */
   onCompleteSelection(): void {
     this.completeSelection.emit(this.selectedTeam);
   }
@@ -106,6 +109,9 @@ export class CharactersComponent {
     this.characterSelected = bot;
   }
 
+  /**
+   * Creates an array of the remaining empty slots to complete a team.
+   */
   emptyTeam(): any[] {
     const empty = Array(3 - this.selectedTeam.length);
     return empty;

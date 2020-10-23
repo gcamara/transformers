@@ -47,12 +47,7 @@
         justify-content: center;
 
         .empty-border {
-            position: absolute;    
-            left: 0;
-            top: 0;
-            width: 96%;
-            height: 96%;
-            display: block;
+            color: white;
             border: .3rem #cecece dashed;
             font-size: 8rem;
             display: flex;
@@ -61,12 +56,62 @@
             font-family: sans-serif;
             opacity: .3;
         }
+        
+        .status, .empty-border {
+            position: absolute;    
+            left: 0;
+            top: 0;
+            width: 96%;
+            height: 94%;
+        }
+        
+        .status {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &::after {
+                content: '';
+                padding: .5rem;
+                box-sizing: border-box;
+                border-radius: .2rem;
+                background-color: #cecece;
+                color: #868686;
+                display: block;
+                font-size: 1.2rem;
+            }
+            
+            &.destroyed {
+                background-color: rgba(255,0,0,.4);
+                color: white;
+
+                &::after {
+                    content: 'DESTROYED'
+                }
+            }
+
+            &.skipped {
+                &::after {
+                    content: 'SKIPPED'
+                }
+            }
+
+            &.defeated {
+                &::after {
+                    content: 'DEFEATED'
+                }
+            }
+        }
 
         img {
             object-fit: contain;
     
-            & ~ * {
+            & ~ *:not(.status) {
                 display: none;
+            }
+
+            &.status {
+                filter: grayscale(1);
             }
         }
     }

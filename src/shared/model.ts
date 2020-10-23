@@ -13,6 +13,8 @@ export class Transformer {
     skill: SkillRange;
     type?: TransformerType;
 
+    status: 'skipped' | 'defeated' | 'destroyed';
+
     constructor(name: string,
                 strength: SkillRange,
                 intelligence: SkillRange, speed: SkillRange,
@@ -76,3 +78,6 @@ export type TransformerType = 'Autobot' | 'Decepticon';
 
 /** Define an object to return an array of Transformers */
 export type Bots = { autobots: Autobot[], decepticons: Decepticon[] };
+
+/** Defines a Fight result */
+export type FightResult = { group: 'A' | 'D' | 'T', winner?: Transformer, loser?: Transformer };
