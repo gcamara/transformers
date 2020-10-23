@@ -1,33 +1,84 @@
-@import '../../../assets/tokens';
-$size: 13rem;
+@import "../../../assets/mixins";
+@media screen and (min-width: 1024px) {
+    $size: 8rem;
+
+    :host {
+        @include size($size);
+    }
+
+    .content,
+    img {
+        @include size($size);
+    }
+
+    .random {
+        @include size($size);
+        font-size: $size;
+        line-height: $size;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    $size: 8rem;
+    :host {
+        @include size($size);
+    }
+    .content,
+    img {
+        @include size($size);
+    }
+    .random {
+        @include size($size);
+        font-size: $size;
+        line-height: $size;
+    }
+}
 
 :host {
     display: block;
-    @include size($size);
-    background-color: white;
     border: 0.4rem transparent inset;
     margin-bottom: 0.3rem;
     cursor: pointer;
-
-    .content, img {
-        @include size($size);
-    }
+    position: relative;
     
-    img {
-        object-fit: contain;
-    }
+    .content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-    &.big {
-        $w: 12rem;
-        $h: 15rem;
-        cursor: initial;
-        @include dimension($w, $h);
-        
-        .content {
-            @include dimension($w, $h);
+        .empty-border {
+            position: absolute;    
+            left: 0;
+            top: 0;
+            width: 96%;
+            height: 96%;
+            display: block;
+            border: .3rem #cecece dashed;
+            font-size: 8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: sans-serif;
+            opacity: .3;
         }
 
         img {
+            object-fit: contain;
+    
+            & ~ * {
+                display: none;
+            }
+        }
+    }
+
+
+    &.big {
+        $w: 10rem;
+        $h: 13rem;
+        cursor: initial;
+        @include dimension($w, $h);
+
+        .content, img, .random {
             @include dimension($w, $h);
         }
     }
@@ -36,7 +87,6 @@ $size: 13rem;
         border: 0.4rem #00c2ff inset;
     }
 
-
     &.selected {
         img {
             filter: grayscale(1);
@@ -44,10 +94,8 @@ $size: 13rem;
     }
 
     .random {
-        @include size($size);
-        font-size: $size;
-        line-height: $size;
         color: #cecece;
         text-align: center;
+        border: .5rem dashed #cecece;
     }
 }

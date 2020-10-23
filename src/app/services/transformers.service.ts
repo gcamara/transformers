@@ -17,6 +17,9 @@ const defaultDecepticons: Decepticon[] = [
   new Decepticon('Predaking', 10, 5, 10, 8, 7, 9, 9, 8),
 ];
 
+/**
+ * Service to display a few options of bots to be chosen.
+ */
 @Injectable({
   providedIn: 'root'
 })
@@ -24,6 +27,9 @@ export class TransformersService {
 
   constructor() { }
 
+  /**
+   * Returns a Bots type with a list of autobots and decepticons.
+   */
   getBots(): Bots {
     return {
       autobots: defaultAutobots,

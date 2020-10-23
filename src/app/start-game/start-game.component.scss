@@ -1,0 +1,113 @@
+@import "../../assets/mixins";
+
+:host {
+    background-color: #161616;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    flex-grow: 1;
+
+    .logo {
+        $s: 12rem;
+        @include size($s);
+        background: url(../../assets/images/logo.png);
+        background-size: $s;
+        background-repeat: no-repeat;
+        opacity: 0;
+        animation: fade-in 1.5s linear forwards;
+    }
+
+    .title {
+        color: white;
+        animation: fade-in 1.5s linear forwards;
+        opacity: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+        h2 {
+            font-size: 3rem;
+            font-weight: 100;
+            margin-bottom: .5rem;
+        }
+
+        .aequilibrium {
+            font-size: 1rem;
+            font-weight: 100;
+            opacity: 0;
+            animation: space-letters 2s linear forwards, fade-in-no-scale .5s linear forwards;
+            animation-delay: 1.5s, 1.5s;
+            letter-spacing: .4rem;
+            margin-right: -.6rem;
+        }
+
+        @keyframes space-letters {
+            to {
+                letter-spacing: .6rem;
+            }
+        }
+    }
+}
+
+.options {
+    color: white;
+    text-align: center;
+    line-height: 5rem;
+    height: 20rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    animation: fade-in-no-scale 1.2s 2.7s linear forwards;
+
+    a {
+        text-decoration: none;
+        color: white;
+    }
+
+    .menu-item {
+        cursor: pointer;
+
+        &.selected {
+            $color: #38a3ff;
+
+            font-style: italic;
+            font-weight: 600;
+            font-size: 1.8rem;
+            color: $color;
+            position: relative;
+            line-height: 5rem;
+
+            &:before {
+                content: "";
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                margin: auto;
+                left: -2rem;
+                width: 0.5rem;
+                height: 0;
+                border: 0.5rem transparent solid;
+                border-left: 0.5rem $color solid;
+                border-right: none;
+            }
+        }
+    }
+}
+
+@keyframes fade-in {
+    to {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in-no-scale {
+    to {
+        opacity: 1;
+    }
+}

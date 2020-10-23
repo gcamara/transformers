@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { BotThumbComponent } from './bot-thumb.component';
+
 
 describe('BotThumbComponent', () => {
   let component: BotThumbComponent;
@@ -21,5 +21,11 @@ describe('BotThumbComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should has "big" class', () => {
+    component.size = 'big';
+    fixture.detectChanges();
+    expect(fixture.nativeElement.classList.contains('big')).toBeTrue();
   });
 });

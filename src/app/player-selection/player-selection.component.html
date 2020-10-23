@@ -1,0 +1,15 @@
+<div class="menu">
+    <a [routerLink]="['/']" class="logo"></a>
+</div>
+<div class="selection">
+    <app-characters [autobots]='true' (completeSelection)="selectAutobots($event)"></app-characters>
+    <div class="versus">VS.</div>
+    <app-characters [decepticons]='true' (completeSelection)="selectDecepticons($event)"></app-characters>
+    <div class="fight"></div>
+</div>
+<div class="select-char">
+    <span *ngIf="!canStartFight; else start">Select Teams</span>
+    <ng-template #start>
+        <span>Press ENTER to start!</span>
+    </ng-template>
+</div>

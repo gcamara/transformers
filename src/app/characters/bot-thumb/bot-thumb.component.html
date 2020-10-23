@@ -1,4 +1,6 @@
 <div class="content">
     <img *ngIf="bot?.name" src="../../../assets/images/{{bot.type.toLowerCase()}}s/{{bot.name.toLowerCase()}}{{size !== 'big' ? '-thumb' : ''}}.jpg">
-    <div class="random" *ngIf="!bot?.name">?</div>
+    <div class="empty-border">
+        ?
+    </div>
 </div>

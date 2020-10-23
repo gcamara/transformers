@@ -1,20 +1,5 @@
 :host {
+    height: 100%;
+    flex-grow: 1;
     display: flex;
-    background: url(../assets/images/bg.jpg);
-    position: relative;
-}
-
-.versus {
-    width: 8rem;
-    height: 0rem;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    font-size: 5rem;
-    font-weight: 600;
-    font-style: italic;
-    color: white;
 }

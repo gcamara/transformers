@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 import { Bots, SkillRange, Transformer, TransformerType } from '../../shared/model';
 import { TransformersService } from '../services/transformers.service';
 
@@ -9,7 +9,7 @@ const statsNames = ['strength', 'intelligence', 'speed', 'endurance', 'rank', 'c
   templateUrl: './characters.component.html',
   styleUrls: ['./characters.component.scss']
 })
-export class CharactersComponent implements OnInit {
+export class CharactersComponent {
 
   @HostBinding('class.autobots')
   @Input()
@@ -26,25 +26,43 @@ export class CharactersComponent implements OnInit {
 
   bots: Bots;
 
+  @Output()
+  completeSelection = new EventEmitter<Transformer[]>();
+
   constructor(transfomerService: TransformersService) {
     this.bots = transfomerService.getBots();
   }
 
-  ngOnInit(): void {
+  onCompleteSelection(): void {
+    this.completeSelection.emit(this.selectedTeam);
   }
 
+  /**
+   * Returns the bot name or suggest to select one.
+   */
   characterName(): string {
     return this.characterSelected?.name ?? 'Select one bot';
   }
 
-  characterStat(name: string): SkillRange {
-    return this.characterSelected?.[name] ?? '-';
+  /**
+   * Returns the value of the attribute or '-' if no bot.
+   * @param attributeName attribute name
+   */
+  characterStat(attributeName: string): '-' | SkillRange {
+    return this.characterSelected?.[attributeName] ?? '-';
   }
 
+  /**
+   * Returns the overall Rating of the selected bot, otherwise '-'
+   */
   characterRating(): string | number {
     return this.characterSelected?.overallRating() ?? '-';
   }
 
+  /**
+   * Return the bot list with a new empty bot, which will be used to
+   * trigger the user input.
+   */
   botList(): Transformer[] {
     let type: TransformerType = 'Autobot';
     let list = this.bots.autobots;
@@ -54,17 +72,21 @@ export class CharactersComponent implements OnInit {
       list = this.bots.decepticons;
     }
 
-    list = [
-      ...list,
-      new Transformer(null, 1, 1, 1, 1, 1, 1, 1, 1, type)
-    ];
     return list;
   }
 
-  isBotSelected(name: string): boolean {
-    return this.selectedTeam.filter(bot => bot?.name === name).length > 0;
+  /**
+   * Check whether the bot is a member of the selected team.
+   * @param botName bot name
+   */
+  isBotSelected(botName: string): boolean {
+    return this.selectedTeam.filter(bot => bot?.name === botName).length > 0;
   }
 
+  /**
+   * Adds or remove a bot from the selected team.
+   * @param bot the bot to be selected or removed.
+   */
   selectBot(bot: Transformer): void {
     if (this.isBotSelected(bot.name)) {
       this.selectedTeam = this.selectedTeam.filter(element => element.name !== bot.name);
@@ -73,10 +95,20 @@ export class CharactersComponent implements OnInit {
         this.selectedTeam.push(bot);
       }
     }
+    this.onCompleteSelection();
   }
 
+  /**
+   * Selects the bot in order to display it's stats.
+   * @param bot the bot to display
+   */
   showStats(bot: Transformer): void {
     this.characterSelected = bot;
+  }
+
+  emptyTeam(): any[] {
+    const empty = Array(3 - this.selectedTeam.length);
+    return empty;
   }
 
 }

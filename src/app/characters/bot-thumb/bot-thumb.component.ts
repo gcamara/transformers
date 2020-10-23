@@ -25,6 +25,10 @@ export class BotThumbComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * Getter and setter for the bot thumb.
+   * Depending on it's size, it'll display the whole image of the bot or it's face.
+   */
   @Input()
   get size(): 'big' | 'small' {
     return this.sizeDef;

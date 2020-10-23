@@ -1,0 +1,75 @@
+@import '../../assets/mixins';
+
+:host {
+    display: flex;
+    background: url(../../assets/images/bg.jpg);
+    background-size: cover;
+    position: relative;
+    flex-direction: column;
+    width: 100%;
+}
+
+.selection {
+    display: flex;
+    flex-grow: 1;
+}
+
+.versus {
+    width: 8rem;
+    height: 0rem;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    font-size: 5rem;
+    font-weight: 600;
+    font-style: italic;
+    color: white;
+}
+
+.menu {
+    min-height: 5rem;
+    width: 8rem;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    box-sizing: border-box;
+    transition: all .6s cubic-bezier(0,0,0,1.2);
+    position: relative;
+}
+
+.logo {
+    $s: 5rem;
+    @include size($s);
+    background: url(../../assets/images/logo.png);
+    background-size: $s;
+    background-repeat: no-repeat;
+    transition: all .5s cubic-bezier(0,0,0,1.4);
+    
+    &:hover {
+        background: url(../../assets/images/logo.png), radial-gradient(#fff 40%, rgba(0,0,0,0) 30%);
+        background-size: $s;
+    }
+}
+
+.select-char {
+    width: 100%;
+    color: white;
+    text-align: center;
+    font-weight: normal;
+    font-style: italic;
+    font-size: 3rem;
+    padding: 10rem;
+    box-sizing: border-box;
+    margin-top: -10rem;
+    opacity: 0;
+    animation: fade-in-out .5s linear infinite alternate-reverse;
+
+    @keyframes fade-in-out {
+        to { opacity: 1; } 
+    }
+}
