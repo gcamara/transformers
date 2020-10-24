@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 const arrows = ['ArrowUp', 'ArrowDown'];
 
@@ -12,13 +13,14 @@ export class StartGameComponent implements OnInit, OnDestroy {
   selected = 0;
   showAbout: boolean;
 
-  constructor() {
+  constructor(router: Router) {
+
     document.onkeydown = (event: KeyboardEvent) => {
       if (arrows.includes(event.key)) {
         this.changeMenu(event);
       } else if (event.key === 'Enter') {
         if (this.selected === 0) {
-          window.location.href = 'new-game';
+          router.navigate(['/new-game']);
         } else {
           this.showAbout = true;
         }
