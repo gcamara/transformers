@@ -1,0 +1,25 @@
+<form (submit)="onSubmit()" [formGroup]="newBotForm">
+    <h1>Add Custom Bot</h1>
+    <div class="name">
+        <label for="name">Name</label>
+        <div class="spacer-10"></div>
+        <input type="text" name="name" id="name" formControlName="name">
+        <div class="error" *ngIf="newBotForm.touched && newBotForm.get('name').invalid">Mandatory field</div>
+    </div>
+    <div class="spacer-20"></div>
+    <div class="type">
+        <label for="type">Type</label>
+        <div class="spacer-10"></div>
+        <input type="text" formControlName="type">
+    </div>
+    <div class="spacer-30"></div>
+    <div class="status" *ngFor="let stat of stats">
+        <label for="{{stat}}">{{stat}}</label>
+        <input type="number" id="{{stat}}" name="{{stat}}" min="1" max="10" formControlName="{{stat}}">
+    </div>
+
+    <div class="botoes">
+        <button type="submit">Add Bot</button>
+        <button (click)="onCancel()">Cancel</button>
+    </div>
+</form>

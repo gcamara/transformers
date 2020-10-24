@@ -1,0 +1,45 @@
+:host {
+    width: 100%;
+    position: fixed;
+    z-index: 99999;
+    background: rgba(0,0,0,.8);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content {
+    min-width: 30rem;
+    min-height: 20rem;
+    background: white;
+    padding: 2rem;
+    box-sizing: border-box;
+    color: #161616;
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    width: 49%;
+    transition: all .2s linear;
+    padding: 1rem 0;
+    border: .2rem transparent solid;
+    background: none;
+    border-radius: .2rem;
+    cursor: pointer;
+    align-self: center;
+    
+    &[type=submit] {
+        background-color: seagreen;
+        color: white;
+        
+        &:hover {
+            background-color: darken(seagreen, 5);
+        }
+    }
+
+    &:hover {
+        border-color: #161616;
+    }
+}

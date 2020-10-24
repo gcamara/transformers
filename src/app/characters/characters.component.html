@@ -24,6 +24,10 @@
             <app-bot-thumb *ngFor="let bot of botList()" [bot]="bot" [selected]="isBotSelected(bot.name)"
                 (click)="selectBot(bot)" (mouseover)="showStats(bot)"></app-bot-thumb>
         </div>
+        <div class="spacer-10"></div>
+        <div class="new-bot" (click)="onNewBot(autobots? 'Autobot': 'Decepticon')">
+            Click here to add your custom bot
+        </div>
     </div>
     <div class="spacer-50"></div>
     <div class="ch-team">
@@ -35,4 +39,5 @@
             <div class="grow"></div>
         </div>
     </div>
+    <app-new-bot *ngIf="newBot" (createBot)="onAddBot($event)" [type]="newBot" (cancel)="onCancel()"></app-new-bot>
 </div>

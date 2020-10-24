@@ -11,6 +11,7 @@ export class Transformer {
     courage: SkillRange;
     firepower: SkillRange;
     skill: SkillRange;
+    added: boolean;
     type?: TransformerType;
 
     status: 'skipped' | 'defeated' | 'destroyed';

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Autobot, Bots, Decepticon, FightResult, Transformer } from 'src/shared/model';
 import { TransformersService } from '../services/transformers.service';
 
@@ -14,14 +15,22 @@ export class BattleFieldComponent implements OnInit {
   logs: { winner?: 'A' | 'D' | 'T' | 'R', message: string }[] = [];
   battles = 0;
 
-  constructor(private transformerService: TransformersService) { }
+  constructor(private transformerService: TransformersService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.bots = this.transformerService.getFightBots();
-
     this.fight();
+    window.onkeypress = (event: KeyboardEvent) => {
+      if (event.key === 'Enter') {
+        this.router.navigate(['/']);
+      }
+    };
   }
 
+  /**
+   * Starts the fight!
+   */
   fight(): void {
 
     const autobotsWinnigs = this.countWinnings('A');
@@ -30,6 +39,7 @@ export class BattleFieldComponent implements OnInit {
     const autobot = this.getNextBot(this.bots.autobots);
     const decepticon = this.getNextBot(this.bots.decepticons);
 
+    // Best of three
     if (autobotsWinnigs === 2 || decepticonsWinnings === 2) {
       this.gameover();
       this.markRestAsSkipped(autobotsWinnigs === 2 ? autobot : decepticon);

@@ -44,10 +44,17 @@ export class TransformersService {
    * Return the bots to start the fight.
    */
   getFightBots(): Bots {
-    const autobots = this.autobotsTeam?.sort((botA: Autobot, botB: Autobot) => botA.rank - botB.rank);
-    const decepticons = this.decepticonsTeam?.sort((botA: Decepticon, botB: Decepticon) => botA.rank - botB.rank);
+    const autobots = [ ...this.autobotsTeam?.sort((botA: Autobot, botB: Autobot) => botA.rank - botB.rank) ];
+    const decepticons = [ ...this.decepticonsTeam?.sort((botA: Decepticon, botB: Decepticon) => botA.rank - botB.rank) ];
 
     return { autobots, decepticons };
+  }
+
+  /**
+   * Status names
+   */
+  stats(): string[] {
+    return ['strength', 'intelligence', 'speed', 'endurance', 'rank', 'courage', 'firepower', 'skill'];
   }
 
 }

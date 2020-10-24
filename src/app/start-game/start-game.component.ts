@@ -10,6 +10,7 @@ const arrows = ['ArrowUp', 'ArrowDown'];
 export class StartGameComponent implements OnInit, OnDestroy {
 
   selected = 0;
+  showAbout: boolean;
 
   constructor() {
     document.onkeydown = (event: KeyboardEvent) => {
@@ -18,6 +19,8 @@ export class StartGameComponent implements OnInit, OnDestroy {
       } else if (event.key === 'Enter') {
         if (this.selected === 0) {
           window.location.href = 'new-game';
+        } else {
+          this.showAbout = true;
         }
       }
     };
@@ -37,8 +40,8 @@ export class StartGameComponent implements OnInit, OnDestroy {
     if (value < 0) {
       value = 0;
     }
-    if (value > 2) {
-      value = 2;
+    if (value > 1) {
+      value = 1;
     }
 
     this.selected = value;
@@ -49,5 +52,9 @@ export class StartGameComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     document.onkeydown = null;
+  }
+
+  onCancelAbout(): void {
+    this.showAbout = false;
   }
 }

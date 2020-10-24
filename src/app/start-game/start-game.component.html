@@ -8,6 +8,6 @@
 <div class="spacer-50"></div>
 <div class="options">
     <a class="menu-item" [ngClass]="{ selected: selected === 0 }" [routerLink]="['/new-game']">New Game</a>
-    <div class="menu-item" [ngClass]="{ selected: selected === 1 }">Instructions</div>
-    <div class="menu-item" [ngClass]="{ selected: selected === 2 }">About</div>
+    <div class="menu-item" [ngClass]="{ selected: selected === 1 }">About</div>
 </div>
+<app-about *ngIf="showAbout" (cancel)="onCancelAbout()"></app-about>

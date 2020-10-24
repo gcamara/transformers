@@ -1,0 +1,83 @@
+:host {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.6);
+    display: flex;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+}
+
+form {
+    background-color: white;
+    box-shadow: 0 0 1rem -.3rem;
+    padding: 2rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    color: #161616;
+    min-width: 40rem;
+
+    label {
+        font-weight: 600;
+        text-transform: capitalize;
+    }
+
+    input, select {
+        padding: 1rem .5rem;
+    }
+
+    select {
+        font-size: 1.6rem;
+    }
+
+    .type, .name {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .status {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+        label {
+            font-weight: 400;
+        }
+    }
+
+    .botoes {
+        display: flex;
+        justify-content: space-between;
+        
+        button {
+            width: 49%;
+            transition: all .2s linear;
+            padding: 1rem 0;
+            border: .2rem transparent solid;
+            background: none;
+            border-radius: .2rem;
+            cursor: pointer;
+            
+            &[type=submit] {
+                background-color: seagreen;
+                color: white;
+                
+                &:hover {
+                    background-color: darken(seagreen, 5);
+                }
+            }
+
+            &:hover {
+                border-color: #161616;
+            }
+        }
+    }
+
+    .error {
+        font-size: 1.2rem;
+        color: indianred;
+    }
+}

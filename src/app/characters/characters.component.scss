@@ -126,3 +126,14 @@
         height: 18rem;
     }
 }
+
+.new-bot {
+    cursor: pointer;
+    opacity: 0;
+    font-size: 1.2rem;
+    animation: fade-in-out .5s linear infinite alternate-reverse;
+
+    @keyframes fade-in-out {
+        to { opacity: 1; } 
+    }
+}

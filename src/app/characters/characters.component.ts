@@ -2,8 +2,6 @@ import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/co
 import { Bots, SkillRange, Transformer, TransformerType } from '../../shared/model';
 import { TransformersService } from '../services/transformers.service';
 
-const statsNames = ['strength', 'intelligence', 'speed', 'endurance', 'rank', 'courage', 'firepower', 'skill'];
-
 @Component({
   selector: 'app-characters',
   templateUrl: './characters.component.html',
@@ -19,8 +17,10 @@ export class CharactersComponent {
   @HostBinding('class.decepticons')
   decepticons: boolean;
 
+  newBot: string;
+
   characterSelected: Transformer;
-  stats = statsNames;
+  stats: any[];
 
   selectedTeam: Transformer[] = [];
 
@@ -31,6 +31,7 @@ export class CharactersComponent {
 
   constructor(transfomerService: TransformersService) {
     this.bots = transfomerService.getBots();
+    this.stats = transfomerService.stats();
   }
 
   /**
@@ -115,6 +116,25 @@ export class CharactersComponent {
   emptyTeam(): any[] {
     const empty = Array(3 - this.selectedTeam.length);
     return empty;
+  }
+
+  onAddBot(bot: Transformer): void {
+    const botlist = this.bots[`${bot.type.toLowerCase()}s`];
+    const contains = botlist.filter((botF: Transformer) => bot.name === botF.name).length;
+    if (contains) {
+      bot.name += `-${contains}`;
+    }
+
+    botlist.push(bot);
+    this.newBot = null;
+  }
+
+  onNewBot(botType: string): void {
+    this.newBot = botType;
+  }
+
+  onCancel(): void {
+    this.newBot = null;
   }
 
 }

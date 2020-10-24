@@ -1,5 +1,6 @@
 <div class="content">
-    <img *ngIf="bot?.name" [ngClass]="{status: bot?.status && bot.status !== 'skipped'}" src="/assets/images/{{bot.type.toLowerCase()}}s/{{bot.name.toLowerCase()}}{{size !== 'big' ? '-thumb' : ''}}.jpg">
+    <img *ngIf="bot?.name && !bot?.added" [ngClass]="{status: bot?.status && bot.status !== 'skipped'}" src="/assets/images/{{bot.type.toLowerCase()}}s/{{bot.name.toLowerCase()}}{{size !== 'big' ? '-thumb' : ''}}.jpg">
+    <img *ngIf="bot?.name && bot?.added" [ngClass]="{status: bot?.status && bot.status !== 'skipped'}" class='white-bg' src="/assets/images/{{bot.type.toLowerCase()}}s/random.png">
     <div class="empty-border">
         ?
     </div>
